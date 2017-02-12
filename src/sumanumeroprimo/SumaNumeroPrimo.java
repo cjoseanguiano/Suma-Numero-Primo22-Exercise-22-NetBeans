@@ -11,24 +11,45 @@ import javax.swing.JOptionPane;
  */
 public class SumaNumeroPrimo {
 
-    public static void main(String[] args) {
-
-        int numero;
-        numero = Integer.parseInt(JOptionPane.showInputDialog("Numero"));
-
+    /**
+     * @param args the command line arguments
+     */
+    public static boolean numeroPrimo(int numero) {
+        boolean encontrado = false;
         int divisor = 2;
-        int suma = 0;
         while (divisor < numero) {
             while (numero % divisor != 0) {
                 divisor++;
-                suma = suma + numero;
+            }
+            if (numero == divisor) {
+                encontrado = true;
+            } else {
+                encontrado = false;
             }
 
         }
+        return (encontrado);
+    }
 
-        if (numero != 0) {
-            System.out.println("Suma" + suma);
-        }
+    public static void main(String[] args) {
+
+        int numero;
+        int a;
+        int sumando = 0;
+        int primo = 0;
+        do {
+
+            numero = Integer.parseInt(JOptionPane.showInputDialog("Numero"));
+            SumaNumeroPrimo sumaNumeroPrimo = new SumaNumeroPrimo();
+            sumaNumeroPrimo.numeroPrimo(numero);
+
+            if (sumaNumeroPrimo.numeroPrimo(numero) == true) {
+                sumando = sumando + numero;
+                System.out.println("Valor de Suma " + sumando);
+            } else {
+                System.out.println("Numero NO primo");
+            }
+        } while (primo < 5);
 
     }
 }
